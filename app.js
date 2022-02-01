@@ -16,15 +16,22 @@ class Player  {
         this.dom.style.transform = `translate(${this.x}px, ${this.y}px)`
     }
 }
-const purple = new Player('.purple', 400, 400, 3);
-const purple2 = new Player('.purple', 600, 400, 3);
+const purple = new Player('.purple', 750, 435, 3);
+const purple2 = new Player('.purple', 805, 380, 3);
+const purple3 = new Player('.purple', 805, 495, 3);
+const purple4 = new Player('.purple', 650, 435, 3);
+const purple5 = new Player('.purple', 500, 435, 3);
 let player = purple
 
 function gameLoop() {
     purple.move()
     purple2.move()
+    purple3.move()
+    purple4.move()
+    purple5.move()
     controlPlayer()
     requestAnimationFrame(gameLoop)
+    console.log(purple.x,purple.y)
 }
 
 const controller = {
