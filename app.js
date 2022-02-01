@@ -14,6 +14,7 @@ class Player  {
         this.x += this.vx
         this.y += this.vy
         this.dom.style.transform = `translate(${this.x}px, ${this.y}px)`
+        this.dom.style.zIndex = this.y
     }
 }
 const purple = new Player('.purple', 750, 435, 3);
