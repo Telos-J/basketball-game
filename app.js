@@ -1,7 +1,8 @@
 class Player  {
     constructor(dom, x, y, speed) {
         this.dom = document.querySelector(dom).cloneNode(true);
-        document.body.appendChild(this.dom)
+        this.dom.classList.remove('hidden')
+        document.querySelector('.arena').appendChild(this.dom)
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -17,11 +18,11 @@ class Player  {
         this.dom.style.zIndex = this.y
     }
 }
-const purple = new Player('.purple', 750, 435, 3);
-const purple2 = new Player('.purple', 805, 380, 3);
-const purple3 = new Player('.purple', 805, 495, 3);
-const purple4 = new Player('.purple', 650, 435, 3);
-const purple5 = new Player('.purple', 500, 435, 3);
+const purple = new Player('.purple', -120, 40, 3);
+const purple2 = new Player('.purple', -120, -50, 3);
+const purple3 = new Player('.purple', -200, -10, 3);
+const purple4 = new Player('.purple', -300, -10, 3);
+const purple5 = new Player('.purple', -400, -10, 3);
 let player = purple
 
 function gameLoop() {
@@ -32,7 +33,6 @@ function gameLoop() {
     purple5.move()
     controlPlayer()
     requestAnimationFrame(gameLoop)
-    console.log(purple.x,purple.y)
 }
 
 const controller = {

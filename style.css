@@ -9,6 +9,7 @@
 html,
 body {
     height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -33,6 +34,10 @@ body {
     color: black;
     text-align: center;
     cursor: pointer;
+}
+
+.green, .purple.hidden {
+    display: none;
 }
 
 .blob {
@@ -90,6 +95,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: -99999;
 }
 
 #baskets {
