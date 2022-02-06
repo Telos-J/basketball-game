@@ -8,6 +8,7 @@ class Player  {
         this.speed = speed;
         this.vx = 0;
         this.vy = 0;
+        this.hasBall = false
     }
    
     
@@ -16,6 +17,14 @@ class Player  {
         this.y += this.vy
         this.dom.style.transform = `translate(${this.x}px, ${this.y}px)`
         this.dom.style.zIndex = this.y
+    }
+
+    grabBall(ball) {
+        if (this.hasBall) return
+        const distance = Math.sqrt((this.x - ball.x + 38)**2 + (this.y- ball.y + 60)**2 )
+        if (distance < 10){
+           this.hasBall = true
+        }
     }
 }
 

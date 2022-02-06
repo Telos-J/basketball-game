@@ -10,7 +10,6 @@ class Ball {
         this.x += this.vx
         this.y += this.vy
         this.dom.style.transform = `translate(${this.x}px, ${this.y}px)`
-        this.dom.style.zIndex = this.y
     }
 }
 
