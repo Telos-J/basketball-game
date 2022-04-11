@@ -9,7 +9,6 @@
 html,
 body {
     height: 100%;
-    overflow: hidden;
 }
 
 body {
@@ -31,13 +30,10 @@ body {
 .green,
 .purple {
     position: absolute;
+    width: 2vw;
     color: black;
     text-align: center;
     cursor: pointer;
-}
-
-.green, .purple.hidden {
-    display: none;
 }
 
 .blob {
@@ -60,7 +56,6 @@ body {
     position: absolute;
     width: 20px;
     height: 20px;
-    z-index: 999999;
 }
 
 #dribbleBall {
@@ -96,7 +91,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: -99999;
 }
 
 #baskets {

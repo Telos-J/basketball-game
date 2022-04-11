@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bahiana&display=swap" rel="stylesheet">
     <title>Basketball Game</title>
-    <script type = "module" src="js/app.js" defer></script>
+    <script src="js/gsap.min.js" defer></script>
+    <script src="js/MorphSVGPlugin.min.js" defer></script>
+    <script src="js/findShapeIndex.js" defer></script>
+    <script src="js/helper.js" defer></script>
+    <script src="js/controller.js" defer></script>
+    <script src="js/engine.js" defer></script>
+    <script src="js/setup.js" defer></script>
+    <script src="js/perspectiveTransform.js" defer></script>
+    <script type="module" src="js/app.js" defer></script>
 </head>
 
 <body>
@@ -40,8 +48,6 @@
             </linearGradient>
         </defs>
     </svg>
-
-    <div class="arena">
 
     <svg id="court" width="1365" height="347" viewBox="0 0 1365 347" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="floor-plates" clip-path="url(#mask)">
@@ -290,7 +296,7 @@
             stroke="#45413C" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
 
-    <div class="green hidden">
+    <div class="green">
         <h1 class="number"></h1>
         <svg class="blob" width="278" height="331" viewBox="0 0 278 331" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="character">
@@ -345,7 +351,7 @@
         </svg>
     </div>
 
-    <div class="purple hidden">
+    <div class="purple">
         <h1 class="number"></h1>
         <svg class="blob flip" width="278" height="331" viewBox="0 0 278 331" fill="none"
             xmlns="http://www.w3.org/2000/svg">
@@ -399,8 +405,6 @@
                     stroke="#45413C" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
             </g>
         </svg>
-    </div>
-
     </div>
 
     <div class="morphTo">
@@ -1147,6 +1151,7 @@
     </div>
 
     <div id="pin"></div>
+
 </body>
 
 </html>
