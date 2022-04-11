@@ -1,12 +1,11 @@
-import { ball } from "./gameObjects.js";
-import { generateTeams, collectPlayers, updateBallActivity, updateScore } from "./gameMethods.js";
-import { drawBackground, drawCourtLines } from "./drawCourt.js";
+import {ball} from "./gameObjects.js";
+import {generateTeams, collectPlayers, updateBallActivity, updateScore} from "./gameMethods.js";
+import {drawBackground, drawCourtLines} from "./drawCourt.js";
 
 function update() {
     for (let player of players) {
         player.initState()
     }
-
 
     for (let player of players) {
         if (!player.coolTime) {
@@ -26,7 +25,7 @@ function update() {
 }
 
 function render() {
-    drawBackground("#b86125");
+    drawBackground("#d28448");
     drawCourtLines();
 
     for (let player of players) {

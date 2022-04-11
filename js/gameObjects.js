@@ -270,7 +270,7 @@ export class Player {
         this.updateDOM()
     }
 
-    updateStat({ goal, ball_probability }) {
+    updateStat({goal, ball_probability}) {
         this.attempt += 1;
         if (goal) {
             if (ball_probability == this.attribute.shoot3) {
@@ -323,7 +323,7 @@ export class Player {
     }
 
     drawPosition() {
-        buffer.fillStyle = this.team.color;
+        buffer.fillStyle = this.team.color === 'green' ? '#70ebb7' : '#9f6feb';
         buffer.beginPath();
         buffer.arc(this.position.x, this.position.y, 20, 0, Math.PI * 2);
         buffer.fill();
@@ -514,7 +514,7 @@ export const ball = {
 
     bounceoff(hoop) {
         console.log('bounceoff')
-        if (this.player) this.player.updateStat({ goal: false });
+        if (this.player) this.player.updateStat({goal: false});
         this.bouncingOff = true;
         this.ySpeed = -this.ySpeed;
         this.speed = 3;
@@ -580,7 +580,7 @@ export const ball = {
     },
 
     drawPosition() {
-        buffer.fillStyle = 'orange';
+        buffer.fillStyle = '#ff8a16';
         buffer.beginPath();
         buffer.arc(this.position.x, this.position.y, 10, 0, Math.PI * 2);
         buffer.fill();

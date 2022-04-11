@@ -1,4 +1,4 @@
-import { Player, Attribute, Team, ball } from "./gameObjects.js";
+import {Player, Attribute, Team, ball} from "./gameObjects.js";
 import {
     idleAnimation,
     idleDribbleAnimation,
@@ -22,7 +22,8 @@ function setPlayerDisplayDOMEvents(player) {
     const displayDOM = document.querySelector(".display");
 
     player.playerDOM.addEventListener("mousemove", (e) => {
-        displayDOM.style.display = "block";
+        player.playerDOM.style.opacity = 0.5
+        displayDOM.style.display = "flex";
         displayDOM.style.transform =
             "translate(" + (e.clientX + 20) + "px, " + (e.clientY + 20) + "px)";
         displayDOM.innerHTML =
@@ -36,10 +37,10 @@ function setPlayerDisplayDOMEvents(player) {
             "kg";
     });
 
-    player.playerDOM.addEventListener(
-        "mouseleave",
-        () => (displayDOM.style.display = "none")
-    );
+    player.playerDOM.addEventListener("mouseleave", () => {
+        player.playerDOM.style.opacity = 1
+        displayDOM.style.display = "none"
+    })
 }
 
 function setPlayerDOM(player) {
