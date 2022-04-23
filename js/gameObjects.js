@@ -5,6 +5,7 @@ import {
     idleAnimation,
     shootAnimation,
 } from "./animation.js";
+import { resetPlayers } from "./app.js";
 
 export class Attribute {
     constructor(shoot, shoot3, defence, stamina, speed) {
@@ -33,6 +34,7 @@ export class Player {
         this.weight = weight;
         this.back_number = back_number;
         this.name = name;
+        this.initalPosition = new Vector2(x, y)
         this.position = new Vector2(x, y);
         this.velocity = new Vector2();
         this.avoidance = new Vector2();
@@ -51,12 +53,31 @@ export class Player {
         this.isShooting = false;
         this.wasShooting = false;
         this.range = 100;
-        this.coolTime = 0;
+        this.coolTime = 100;
         this.avoidOpponentConst = 2;
-        this.markOpponentConst = 1;
+        this.markOpponentConst = 2;
         this.avoidWallConst = 1.3;
         this.chaseBallConst = 1;
         this.chaseHoopConst = 1;
+    }
+
+    reset() {
+        const character = this.playerDOM.querySelector("#character");
+        const paths = Array.from(character.querySelectorAll("path"));
+        this.position.set(this.initalPosition.x, this.initalPosition.y)
+        this.velocity.set(0, 0)
+        this.hasBall = false;
+        this.hadBall = false;
+        this.coolTime = 100;
+        this.isMoving = false;
+        this.wasMoving = false;
+        this.isShooting = false;
+        this.wasShooting = false;
+        if (this.target.x < buffer.canvas.width / 2)
+            this.playerDOM.classList.add("flip");
+        else
+            this.playerDOM.classList.remove("flip");
+        idleAnimation(paths);
     }
 
     initState() {
@@ -153,7 +174,7 @@ export class Player {
     steal(player) {
         player.hasBall = false;
         player.isMoving = false;
-        player.coolTime = 100;
+        player.coolTime = 20;
     }
 
     dribble(ball) {
@@ -302,7 +323,7 @@ export class Player {
         if (this.hasBall) this.playerDOM.querySelector("#dribbleBall").style.display = "block";
         else this.playerDOM.querySelector("#dribbleBall").style.display = "none";
 
-        this.playerDOM.style.zIndex = Math.floor(this.position.y);
+        this.playerDOM.style.zIndex = Math.floor(this.position.y + 300);
 
         let position = new Vector2(...perspectiveTransform(this.position.x, buffer.canvas.height - this.position.y))
         position = convertToWindowCoord(position);
@@ -359,7 +380,7 @@ export class Player {
         }
     }
 
-    avoidOpponent(players) {
+    avoidOpponent(players) {    
         let avoidance = new Vector2();
 
         for (let player of players)
@@ -455,12 +476,16 @@ export const ball = {
         this.player = undefined;
         this.isDead = true;
         this.inBasket = false;
+        this.bouncingOff = false;
+        this.dribbling = false;
+        this.isEmpty = false;
+        resetPlayers()
     },
 
     bound() {
-        if (this.position.x > buffer.canvas.width + 200 ||
+        if (this.position.x > buffer.canvas.width ||
             this.position.y > buffer.canvas.height ||
-            this.position.x < -200 ||
+            this.position.x < 0 ||
             this.position.y < 0) this.reset();
 
         if (this.yPosition < 0) {

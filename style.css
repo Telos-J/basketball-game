@@ -34,7 +34,7 @@ body {
 .green,
 .purple {
     position: absolute;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     color: black;
@@ -43,12 +43,19 @@ body {
 }
 
 .blob {
-    width: 80px;
+    width: 68px;
     height: 80px;
 }
 
 .flip svg {
     transform: rotateY(180deg);
+}
+
+.pointer {
+    display: none;
+    position: absolute;
+    width: 30px;
+    transform: translate(25px, -60px);
 }
 
 .number {
@@ -59,6 +66,7 @@ body {
 }
 
 #basketball {
+    display: none;
     position: absolute;
     width: 20px;
     height: 20px;
@@ -97,6 +105,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* width: 100%; */
 }
 
 #baskets {
@@ -105,6 +114,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 251;
+    /* width: 100%; */
 }
 
 #hoops {
@@ -113,6 +123,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 200;
+    /* width: 100%; */
 }
 
 #court-canvas {

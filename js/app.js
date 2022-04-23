@@ -1,5 +1,5 @@
 import {ball} from "./gameObjects.js";
-import {generateTeams, collectPlayers, updateBallActivity, updateScore} from "./gameMethods.js";
+import {generateTeams, collectPlayers, updateScore} from "./gameMethods.js";
 import {drawBackground, drawCourtLines} from "./drawCourt.js";
 
 function update() {
@@ -19,7 +19,6 @@ function update() {
         player.update();
     }
 
-    // updateBallActivity(ball, players);
     // updateScore(roster1, roster2);
     ball.update();
 }
@@ -50,8 +49,26 @@ function render() {
 
 const [roster1, roster2] = generateTeams();
 const players = collectPlayers(roster1, roster2);
-const controlPlayer = roster1.players[0];
+let controlPlayer = roster1.players[0];
+controlPlayer.playerDOM.querySelector('.pointer').style.display = 'block'
 const engine = new Engine(1000 / 30, update, render);
 
 resize();
+
+for (let player of players) {
+    player.playerDOM.style.display = 'flex'
+    player.playerDOM.addEventListener('click', () => {
+        controlPlayer.playerDOM.querySelector('.pointer').style.display = 'none'
+        controlPlayer = player
+        controlPlayer.playerDOM.querySelector('.pointer').style.display = 'block'
+    })
+}
+ball.DOM.style.display = 'block'
+
 engine.start();
+
+export function resetPlayers() {
+    for (const player of players) {
+        player.reset()
+    }
+}

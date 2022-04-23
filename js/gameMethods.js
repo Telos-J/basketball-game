@@ -56,6 +56,8 @@ function setPlayerDOM(player) {
     if (player.target.x < buffer.canvas.width / 2)
         player.playerDOM.classList.add("flip");
     player.playerDOM.style.zIndex = player.y;
+    const pointer = player.playerDOM.querySelector('.pointer')
+    gsap.to(pointer, {yoyo: true, y: '+=5', repeat: -1})
 
     setPlayerBackNumber(player);
     setPlayerInitAnimations(player);
@@ -110,13 +112,6 @@ export function collectPlayers(...teams) {
         players = players.concat(team.players)
     }
     return players
-}
-
-export function draw_ball() {
-
-}
-
-export function updateBallActivity(ball, players) {
 }
 
 export function updateScore(team1, team2) {
